@@ -39,7 +39,7 @@ end
 on(obs(search)) do val
     finds = findin([contains(lowercase(i), lowercase(val)) 
                     for i in materialdata[:,1]], true)
-    if length(far)>=1
+    if length(finds)>=1
         obs(element)[] = finds[1]
     end
 end
