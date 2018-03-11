@@ -2,7 +2,7 @@ using InteractNext, Plots
 
 const N_A = 6.022e23
 const d = [0:0.05:10...]
-materialdata = readcsv("materialdata.csv")
+materialdata = readdlm("materialdata.csv", ',', skipstart=1)
 # Formatted as
 # name, σ_a, σ_s, ρ, A
 
@@ -44,8 +44,6 @@ on(obs(search)) do val
     end
 end
 
-function responder(req) 
-    ui
-end
+responder(req) = ui
 
-webio_serve(page("/", responder), 8004)
+webio_serve(page("/", responder))
